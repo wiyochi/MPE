@@ -1,0 +1,34 @@
+CXX = g++
+CXXFLAGS = 
+ 
+#-----Final product----------------------
+PRODUCT = mpe
+
+#-----File Location----------------------
+SRCDST = src src/Basics src/Display src/Physics
+OBJDST = bin/obj/
+EXEDST = exe
+ 
+#-----File List----------------------
+SRC = $(foreach dir,$(SRCDST),$(wildcard $(dir)/*.cpp))
+OBJPATH = $(addsuffix .o, $(basename $(foreach source,$(SRC),$(subst $(dir $(source)),$(OBJDST),$(source)))))
+OBJ = $(addsuffix .o, $(basename $(SRC)))
+objet = 
+
+#-----Base rules---------------------------------
+%.o : %.cpp
+	$(eval objet = $(subst $(dir $@),$(OBJDST),$@))
+	$(CXX) $(CXXFLAGS) -c $< -o $(objet)
+
+#-----Main rule---------------------------------
+all: $(OBJ)
+	echo $(OBJ)
+	$(CXX) $(CXXFLAGS) -o ${EXEDST}/${PRODUCT} $(OBJPATH)
+
+#-----Other stuff----------------------------
+depend:
+	makedepend $(CXXFLAGS) -Y $(SRC)
+
+clean:
+	rm -f $(OBJPATH)
+	rm -f ${EXEDST}/${PRODUCT}

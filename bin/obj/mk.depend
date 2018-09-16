@@ -1,0 +1,21 @@
+./bin/obj/main.o: sources/main.cpp sources/Display/Scene.h \
+ sources/Display/../Physics/PhysicObject.h \
+ sources/Display/../Physics/../Basics/basics.h \
+ sources/Display/../Physics/Circle.h sources/Physics/PhysicManager.h \
+ sources/Display/CircleDrawable.h
+./bin/obj/basics.o: sources/Basics/basics.cpp sources/Basics/basics.h
+./bin/obj/Circle.o: sources/Physics/Circle.cpp sources/Physics/Circle.h \
+ sources/Physics/../Basics/basics.h sources/Physics/PhysicObject.h
+./bin/obj/PhysicManager.o: sources/Physics/PhysicManager.cpp \
+ sources/Physics/PhysicManager.h sources/Physics/../Basics/basics.h \
+ sources/Physics/PhysicObject.h
+./bin/obj/PhysicObject.o: sources/Physics/PhysicObject.cpp \
+ sources/Physics/PhysicObject.h sources/Physics/../Basics/basics.h
+./bin/obj/Scene.o: sources/Display/Scene.cpp sources/Display/Scene.h \
+ sources/Display/../Physics/PhysicObject.h \
+ sources/Display/../Physics/../Basics/basics.h \
+ sources/Display/../Physics/Circle.h
+./bin/obj/CircleDrawable.o: sources/Display/CircleDrawable.cpp \
+ sources/Display/CircleDrawable.h sources/Display/../Physics/Circle.h \
+ sources/Display/../Physics/../Basics/basics.h \
+ sources/Display/../Physics/PhysicObject.h
